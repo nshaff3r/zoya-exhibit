@@ -1,8 +1,8 @@
-export const headline = "Zoya Cherkassky Offers a Response to Our Global Political Crisis: Sex."
+export const headline = "Zoya Cherkassky-Nnadi Offers a Response to Our Global Political Crisis: Sex."
 export const subhead = "In her first showing since a series of protests interrupted her exhibition about October 7, the Ukrainian-Israeli artist gives a comical, defiant, and grim answer."
 export const byline = "Written and Developed by <a href='https://chicagomaroon.com/staff_name/nolan-shaffer'>Nolan Shaffer</a>."
 export const p1 = [
-    "What does an appropriate artistic response to our global political crisis look like? And what does that tell us about the society we live in? For Zoya Cherkassky, it’s all rather explicit. The Ukrainian-Israeli artist, who has spent much of her life in the shadow of conflict—she grew up in Soviet-controlled Kyiv before moving to Israel in 1991—answered with sex, and lots of it, in her exhibition <i>The Global Political Crisis</i> at the Neubauer Collegium this fall.",
+    "What does an appropriate artistic response to our global political crisis look like? And what does that tell us about the society we live in? For Zoya Cherkassky-Nnadi, it’s all rather explicit. The Ukrainian-Israeli artist, who has spent much of her life in the shadow of conflict—she grew up in Soviet-controlled Kyiv before moving to Israel in 1991—answered with sex, and lots of it, in her exhibition <i>The Global Political Crisis</i> at the Neubauer Collegium this fall.",
     "It’s a strange feeling to walk into an exhibit titled <i>Zora Cherkassky: The Global Political Crisis</i> and be greeted by a deluge of pornography: mugs with breasts; a gun-shaped penis; large paintings of nudity; and many, many positions of intercourse."
 ]
 
