@@ -1,6 +1,1 @@
-# hunkydory
-
-React with motion and some fun scroll-based animations ❤️.
-<br/>
-[www.hunkydory.online](http://www.hunkydory.online/)
-# zoya-exhibit
+# Interactive piece for the Arts and Culture section of the *Maroon*.
