@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Scrollama, Step } from 'react-scrollama';
-import { p1, p2, p3, p4, p5, p6, p7, s1, s2, s3, s4, s5 } from '../../public/content.js';
+import { p1, p2, p3, p4, p5, p6, p7, s1, s2, s3, s4, s5, showing } from '../../public/content.js';
 
 const ScrollContainer = (props) => {
     const {
@@ -35,7 +35,7 @@ const ScrollContainer = (props) => {
                     </Step>
                 ))}
                 <Step data={end}>
-                    <div className="h-[10px]"></div>
+                    <div style={{ height: `10px`}}></div>
                 </Step>
             </Scrollama>
         </div>
@@ -44,7 +44,7 @@ const ScrollContainer = (props) => {
 
 const AnimationContainerOne = ({ currentStepIndex, direction, scrollY }) => {
     return (
-        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center">
+        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[13vh]">
             <img 
                 src="love.jpg" 
                 alt="image1" 
@@ -66,7 +66,7 @@ const AnimationContainerOne = ({ currentStepIndex, direction, scrollY }) => {
 const AnimationContainerTwo = ({ currentStepIndex, direction, scrollY }) => {
     console.log("currentStepIndex", currentStepIndex);
     return (
-        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center">
+        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[20vh]">
             <img 
                 src="global.jpg" 
                 alt="image1" 
@@ -102,7 +102,7 @@ const AnimationContainerTwo = ({ currentStepIndex, direction, scrollY }) => {
 const AnimationContainerThree = ({ currentStepIndex, direction, scrollY }) => {
     console.log("currentStepIndex", currentStepIndex);
     return (
-        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center">
+        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[30vh]">
             <img 
                 src="table.jpg" 
                 alt="image1" 
@@ -138,19 +138,20 @@ const AnimationContainerThree = ({ currentStepIndex, direction, scrollY }) => {
                     transition-opacity duration-[1500ms]
                     ${currentStepIndex >= 19? 'opacity-100' : 'opacity-0'}`} 
             />
+
         </div>
     );
 };
 
 const AnimationContainerFour= ({ currentStepIndex, direction, scrollY }) => {
     return (
-        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center">
+        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[20vh]">
             <img 
                 src="cover.jpg" 
                 alt="image1" 
                 className={`absolute max-h-screen w-auto h-auto object-cover
                     transition-opacity duration-[1500ms]
-                    ${currentStepIndex <= 22 ? 'opacity-100' : 'opacity-0'}`} 
+                    ${currentStepIndex <= 21 ? 'opacity-100' : 'opacity-0'}`} 
             />
             <img 
                 src="cover-table.jpg" 
@@ -164,7 +165,7 @@ const AnimationContainerFour= ({ currentStepIndex, direction, scrollY }) => {
                 alt="image1" 
                 className={`absolute max-h-screen max-w-[95dvw] w-auto h-auto object-cover
                     transition-opacity duration-[1500ms]
-                    ${currentStepIndex == 24 ? 'opacity-100' : 'opacity-0'}`} 
+                    ${currentStepIndex == 24 || currentStepIndex == 22 ? 'opacity-100' : 'opacity-0'}`} 
             />
             <img 
                 src="cover-window.jpg" 
@@ -205,7 +206,7 @@ const VideoContainer = ({ currentStepIndex, direction, scrollY }) => {
     }, [currentStepIndex]);
 
     return (
-        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center">
+        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[8vh]">
             <video
                 ref={videoRef}
                 src="protests.mp4"
@@ -261,6 +262,13 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Reset currentStepIndex to 0 when user scrolls to the top of the page
+    useEffect(() => {
+        if (scrollY <= 100) {
+            setCurrentStepIndex(0);
+        }
+    }, [scrollY]);
+
     const onStepEnter = ({ data }) => {
         setCurrentStepIndex(data);
     };
@@ -278,12 +286,12 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
 
     return (
         <div className="[overflow-x:clip]">
-            <p className = "text-right mr-5"><i>The Loner</i> (2025) looks out at the University of Chicago,
+            <p className = "text-right mr-3 md:mr-5 text-sm"><i>The Loner</i> (2025) looks out at the University of Chicago,
             awaiting a response.<br />Courtesy of BOB (Robert Heishman).</p>
-            <div className="w-[95dvw] mx-auto py-10 flex flex-col items-center">
+            <div className="w-[95dvw] mx-auto py-10 md:py-10 flex flex-col items-center">
                 {p1.map((text, index) => (
                     <p
-                    className="mb-[20px] px-[5%] lg:px-[20%]"
+                    className="mb-[20px] px-[2%] lg:px-[20%]"
                     key={index}
                     dangerouslySetInnerHTML={{ __html: text }}
                     />
@@ -301,10 +309,10 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                     height={height}
                 />
             </div>
-            <div className="w-[95dvw] mx-auto py-10 flex flex-col items-center">
+            <div className="w-[95dvw] mx-auto max-[440px]:-mt-[17vh] md:py-10 flex flex-col items-center">
                 {p2.map((text, index) => (
                     <p
-                    className="mb-[20px] px-[5%] lg:px-[20%]"
+                    className="mb-[20px] px-[2%] lg:px-[20%]"
                     key={index}
                     dangerouslySetInnerHTML={{ __html: text }}
                     />
@@ -322,13 +330,13 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                     height={height}
                 />
             </div>
-            <p className="text-[14px] italic text-right justify-center flex pr-4 bg-white relative z-20 mt-[-30px] ml-[50%] sm:ml-[30%]">
+            <p className="text-[14px] italic text-right justify-center flex pr-4 bg-white relative z-20 ml-[50%] sm:ml-[30%]">
                 Video courtesy of Hyperallergic.<br />Painting courtesy of the artist and Fort Gansevoort, New York.
             </p>
-            <div className="w-[95dvw] mx-auto py-10 flex flex-col items-center">
+            <div className="w-[95dvw] mx-auto mt-[5vh] md:py-10 flex flex-col items-center">
                 {p3.map((text, index) => (
                     <p
-                    className="mb-[20px] px-[5%] lg:px-[20%]"
+                    className="mb-[20px] px-[2%] lg:px-[20%]"
                     key={index}
                     dangerouslySetInnerHTML={{ __html: text }}
                     />
@@ -346,10 +354,10 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                     height={height}
                 />
             </div>
-            <div className="w-[95dvw] mx-auto py-10 flex flex-col">
+            <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col max-[440px]:-mt-[30vh]">
                 {p4.map((text, index) => (
                     <p
-                    className="mb-[20px] px-[5%] lg:px-[20%]"
+                    className="mb-[20px] px-[2%] lg:px-[20%]"
                     key={index}
                     dangerouslySetInnerHTML={{ __html: text }}
                     />
@@ -359,6 +367,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                         direction={direction}
                         scrollY={scrollY}
                 />
+                
                 <ScrollContainer
                     onStepEnter={onStepEnter}
                     onStepExit={onStepExit}
@@ -367,10 +376,10 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                     height={height}
                 />
             </div>
-            <div className="w-[95dvw] mx-auto py-10 flex flex-col">
+            <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col max-[440px]:-mt-[27vh]">
                 {p5.map((text, index) => (
                     <p
-                    className="mb-[20px] px-[5%] lg:px-[20%]"
+                    className="mb-[20px] px-[2%] lg:px-[20%]"
                     key={index}
                     dangerouslySetInnerHTML={{ __html: text }}
                     />
@@ -388,18 +397,22 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                     height={height}
                 />
             </div>
-            <div className="w-[95dvw] mx-auto py-10 flex flex-col mt-[-5%]">
+            <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col max-[440px]:-mt-[60vw]">
                 {p6.map((text, index) => (
                     <p
-                    className="mb-[20px] px-[5%] lg:px-[20%]"
+                    className="mb-[20px] px-[2%] lg:px-[20%]"
                     key={index}
                     dangerouslySetInnerHTML={{ __html: text }}
                     />
                 ))}
-                <p className="mb-[20px] px-[5%] lg:px-[20%]">
+                <p className="mb-[20px] px-[2%] lg:px-[20%]">
                     {p7}
-                    <img src="maroon_logo_m_black.svg" alt="M"
-                    className="w-[20px] inline-block align-baseline ml-[7px]" />
+                    {/* <img src="maroon_logo_m_black.svg" alt="M"
+                    className="w-[20px] inline-block align-baseline ml-[7px]" /> */}
+                </p>
+                <p 
+                    className="mb-[20px] px-[2%] lg:px-[20%]"
+                    dangerouslySetInnerHTML={{ __html: showing }}>
                 </p>
             </div>
         </div>
